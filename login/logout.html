@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="ko">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -9,128 +10,31 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
     <title>LOL 메인화면</title>
-    <script type="text/javascript" src="../js/search.jss" defer></script>
-    <script type="text/javascript" src="../js/pop_up.js" defer></script>
-    <script type="text/javascript" src="../js/login.js" defer></script>
-    <style>
-        table {
-            font-size: 20pt;
-            color: white;
-        }
-    </style>
+    <link rel="stylesheet" href="../css/login.css">
 </head>
 
-<body style="background-color: black;">
-
-    <!-- <div style="display: flex; justify-content: center;">
-        <img src="image/LOGO.png" width="200" height="60">
-        <h3 style="font-size: 24px; font-weight: bold; font-style: italic; color: white; font-family: '굴림';">
-            <a href="https://www.leagueoflegends.com/ko-kr/how-to-play/" target="_blank">기본정보</a> 챔피언 패치 노트 새소식 등 (메뉴 정보 입력하기)
-        </h3>
-    </div> -->
-    <nav class="navbar navbar-expand-lg bg-body-tertiary" data-bs-theme="dark">
-        <div class="container-fluid">
-            <nav class="navbar bg-body-tertiary">
-                <div class="container-fluid">
-                    <a class="navbar-brand" href="#">
-                        <img class="img-fluid" src="/image/LOGO.png" alt="Logo" width="130" height="60" class="d-inline-block align-text-top" onmouseover="over(this)" onmouseout="out(this)">
-                    </a>
+<body>
+    <section class="vh-100 gradient-custom">
+        <div class="container py-5 h-100">
+            <div class="row d-flex justify-content-center align-items-center h-100">
+                <div class="col-12 col-md-8 col-lg-6 col-xl-5">
+                    <div class="card bg-dark text-white" style="border-radius: 1rem;">
+                        <div class="card-body p-5 text-center">
+                            <div class="mb-md-5 mt-md-4 pb-5">
+                                <br><br>
+                                <h2 class="fw-bold mb-2 text-uppercase">로그아웃 메인화면</h2>
+                                <br><br><br><br>
+                                <button data-mdb-button-init data-mdb-ripple-init class="btn btn-outline-light btn-lg px-5" id="login_btn" type="button" onclick="location.href = 'index.html';">로그아웃</button>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-            </nav>
-            <a class="navbar-brand" href="#">홈페이지 테스트</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNavDropdown">
-                <ul class="navbar-nav">
-                    <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="#">메인페이지</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">기본정보</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">챔피언</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">패치노트</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">새소식</a>
-                    </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            고객지원
-                        </a>
-                        <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="https://download.kr.riotgames.com/league">게임 다운로드</a></li>
-                            <li><a class="dropdown-item" href="https://lol.inven.co.kr/">롤 커뮤니티</a></li>
-                            <li><a class="dropdown-item" href="https://github.com/">깃 허브 페이지</a></li>
-                        </ul>
-                    </li>
-                </ul>
             </div>
-            <nav class="navbar bg-body-tertiary">
-              <div class="container-fluid">
-                <a class="navbar-brand">게임정보</a>
-                <form class="d-flex" role="search" onsubmit=" return googleSearch();">
-                  <input class="form-control me-2" id="search_input" name="q" type="search" placeholder="키워드 입력" aria-label="Search">
-                  <button class="btn btn-outline-success" id="search_button_msg" type="submit">검색하기</button>
-                  <a href="login/logout.html" class="btn btn-outline-success" id="logout_btn">로그아웃 하기</a>
-                </form>
-              </div>
-            </nav>
         </div>
-    </nav>
-
-    <hr>
-
-    <div style="display: flex; justify-content:  center;">
-        <a href="index.html" target="_blank"><img src="image/MAIN.jpg" width="1200" height="768"></a>
-    </div>
-
-    <div style="display: flex; justify-content: center;">
-        <table class="table" border="1">
-            <caption>인기 캐릭터</caption>
-            <tbody>
-                <tr class="table-primary">
-                    <td><b>#</b></td>
-                    <td><b>1</b></td>
-                    <td><b>2</b></td>
-                    <td><b>3</b></td>
-                    <td><b>4</b></td>
-                    <td><b>5</b></td>
-                </tr>
-                <tr class="table-secondary">
-                    <td><b>1</b></td>
-                    <td>사이온</td>
-                    <td>아리</td>
-                    <td>가렌</td>
-                    <td>가렌2</td>
-                    <td>가렌3</td>
-                </tr>
-                <tr class="table-success">
-                    <td><b>공백</b></td>
-                    <td colspan="5"><a href="https://www.leagueoflegends.com/ko-kr/" target="_blank">롤 웹사이트 접속하기</a></td>
-                </tr>
-                <tr class="table-danger">
-                    <td><b>2</b></td>
-                    <td><b>카직스</b></td>
-                    <td>루시안</td>
-                    <td>루시안2</td>
-                    <td colspan="2">
-                        <font size="13"><img src="image/Bye.jpg" width="60" height="65">바이1, 바이2</font>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-    </div>
-
-    <hr>
-
-    <div style="display: flex; justify-content: center;">
+    </section>
+    <div style="display: flex; justify-content: center; background-color: black;">
         <h3 style="font-size: 24px; font-weight: bold; font-style:italic; color: white; font-family: '굴림';">라이엇 게임 회사 정보 2024년 x월 작성됨</h3>
     </div>
-
 </body>
+
 </html>
