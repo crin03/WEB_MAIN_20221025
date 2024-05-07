@@ -18,6 +18,30 @@ const check_input = () => {
         alert('비밀번호는 반드시 12글자 이상 입력해야 합니다.');
         return false;
     }
+
+    // 8주차 응용문제 길이 제한 ( 테스트 편의상 주석처리 )
+    /*
+    if (emailValue.length > 10) {
+        alert('아이디는 10글자 이하 입력해야 합니다.');
+        return false;
+    }
+    if (passwordValue.length > 15) {
+        alert('비밀번호는 반드시 15글자 이하 입력해야 합니다.');
+        return false;
+    }
+    */
+
+    // 응용문제 세글자 이상 반복 제한
+    if (/(.{3,}).*\1/.test(emailValue)) {
+        alert('아이디에는 3글자 이상의 반복 패턴을 사용할 수 없습니다.');
+        return false;
+    }
+
+    // 응용문제 연속된 숫자 2개이상 제한
+    if (/\d{2,}/.test(emailValue)) {
+        alert('아이디에는 연속된 숫자 2개 이상을 사용할 수 없습니다.');
+        return false;
+    }
     
     const hasSpecialChar = passwordValue.match(/[!,@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]+/) !== null;     
     if (!hasSpecialChar) {
