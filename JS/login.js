@@ -13,8 +13,8 @@ function getCookie(name) {
         var cookie_array = cookie.split("; ");
         for ( var index in cookie_array) {
             var cookie_name = cookie_array[index].split("=");
-            if (cookie_name[0] == "id") {
-                return cookie_name[1];
+            if (cookie_name[0] == name) { // name이 id인것을 가져오는 거에서 name을 가져오는걸로 변경
+                return cookie_name[1]; 
             }
         }
     }
@@ -30,6 +30,25 @@ function init(){ // 로그인 폼에 쿠키에서 가져온 아이디 입력
         idsave_check.checked = true;
     }
 }
+
+// 10주차 응용문제
+
+function login_count() {
+    let count = parseInt(getCookie("login_cnt"))|| 0;
+    count++; 
+    setCookie("login_cnt", count, 1);
+}
+  
+function logout_count() {
+    let count = parseInt(getCookie("logout_cnt")) || 0;
+    count++;
+    setCookie("logout_cnt", count, 1);
+}
+
+function logout() {
+    location.href='../index.html';
+    logout_count();
+}
     
 const check_input = () => {
     const loginForm = document.getElementById('login_form');
@@ -42,7 +61,7 @@ const check_input = () => {
 
     const emailValue = emailInput.value.trim();
     const passwordValue = passwordInput.value.trim();
-
+    /*
     if (emailValue.length < 5) {
         alert('아이디는 최소 5글자 이상 입력해야 합니다.');
         return false;
@@ -51,7 +70,7 @@ const check_input = () => {
         alert('비밀번호는 반드시 12글자 이상 입력해야 합니다.');
         return false;
     }
-
+    */
     // 8주차 응용문제 길이 제한 ( 테스트 편의상 주석처리 )
     /*
     if (emailValue.length > 10) {
@@ -120,7 +139,7 @@ const check_input = () => {
 
     console.log('이메일:', emailValue);
     console.log('비밀번호:', passwordValue); 
-    
+
     if(idsave_check.checked == true) { // 아이디 체크 o
         alert("쿠키를 저장합니다.", emailValue);
         setCookie("id", emailValue, 1); // 1일 저장
@@ -132,6 +151,8 @@ const check_input = () => {
     }
     
     loginForm.submit();
+
+    login_count();
 };
     
     document.getElementById("login_btn").addEventListener('click', check_input);
