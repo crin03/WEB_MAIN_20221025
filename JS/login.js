@@ -50,6 +50,20 @@ function logout() {
     logout_count();
 }
     
+// 10주차 연습문제
+function login_failed() {
+    let fail_count = parseInt(getCookie("login_failed")) || 0;
+    fail_count++;
+    setCookie("login_failed", fail_count, 1);
+    if (fail_count > 3) {
+        alert("로그인 가능 횟수를 초과했습니다. 4분 간 로그인 할 수 없습니다.");
+        document.getElementById('login_btn').disabled = true; // 로그인 횟수를 초과하면 로그인 시도를 할 수 없도록 제한
+    } else {
+        alert(fail_count + "회 로그인 실패(로그인 시도 3회 초과시 로그인이 제한됩니다.)");
+    }
+    return fail_count;
+}
+
 const check_input = () => {
     const loginForm = document.getElementById('login_form');
     const loginBtn = document.getElementById('login_btn');
@@ -86,18 +100,21 @@ const check_input = () => {
     // 응용문제 세글자 이상 반복 제한
     if (/(.{3,}).*\1/.test(emailValue)) {
         alert('아이디에는 3글자 이상의 반복 패턴을 사용할 수 없습니다.');
+        login_failed();
         return false;
     }
 
     // 응용문제 연속된 숫자 2개이상 제한
     if (/\d{2,}/.test(emailValue)) {
         alert('아이디에는 연속된 숫자 2개 이상을 사용할 수 없습니다.');
+        login_failed();
         return false;
     }
     
     const hasSpecialChar = passwordValue.match(/[!,@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]+/) !== null;     
     if (!hasSpecialChar) {
         alert('패스워드는 특수문자를 1개 이상 포함해야 합니다.');
+        login_failed();
         return false;
     }
 
@@ -105,6 +122,7 @@ const check_input = () => {
     const hasLowerCase = passwordValue.match(/[a-z]+/) !== null; 
     if (!hasUpperCase || !hasLowerCase) {
         alert('패스워드는 대소문자를 1개 이상 포함해야 합니다.');
+        login_failed();
         return false;
     }
     
