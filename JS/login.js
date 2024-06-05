@@ -47,7 +47,8 @@ function logout_count() {
 }
 
 function logout() {
-    session_del(); // 세션 삭제
+    session_del(); // 세션 삭제 
+    clearTimeout(logoutTimer); // 14주차 연습문제 자동 로그아웃 타이머 정리리
     location.href='../index.html';
     logout_count();
 }
@@ -141,10 +142,31 @@ function decrypt_text(){
 function init_logined(){
     if(sessionStorage) {
         decrypt_text(); // 복호화 함수
+        startLogoutTimer(); // 14주차 연습문제
     } else {
         alert("세션 스토리지 지원 x");
     }
 }
+
+// 14주차 연습문제 (자동 로그아웃)
+let logoutTimer; // 자동 로그아웃 타이머
+
+function startLogoutTimer() {
+    logoutTimer = setTimeout(function() {
+        logout(); // 5분 후에 자동 로그아웃
+        alert("자동 로그아웃 되었습니다.");
+    }, 5 * 60 * 1000); // 5분 = 5 * 60 * 1000 밀리초
+    // 5분 전에 팝업 표시
+    setTimeout(function() {
+        showPopup(); // 팝업 표시
+    }, 4.5 * 60 * 1000); // 4.5분 = 4.5 * 60 * 1000 밀리초
+}
+
+function showPopup() {
+    window.open("../popup/logoutPopup.html", "팝업테스트", "width=400, height=300, top=10, left=10");
+}
+
+
 
 const check_input = () => {
     const loginForm = document.getElementById('login_form');
@@ -254,6 +276,8 @@ const check_input = () => {
     loginForm.submit();
     
     login_count();
+
+    startLogoutTimer();
 };
     
 document.getElementById("login_btn").addEventListener('click', check_input);
