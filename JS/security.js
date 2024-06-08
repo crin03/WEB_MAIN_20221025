@@ -32,3 +32,9 @@ function decrypt_text(){
     const b = this.decodeByAES256(rk, eb);
     console.log(b); 
 }
+
+function decrypt_text_join(encryptedData) { // 14주차 응용문제
+    const k = "key"; // 서버의 키
+    const rk = k.padEnd(32, " "); // AES256은 key 길이가 32
+    return decodeByAES256(rk, encryptedData);
+}

@@ -81,3 +81,17 @@ function session_join_set(){ //세션 저장(객체)    
         alert("세션 스토리지 지원 x");
     } 
 }
+
+function session_join_get() { // 14주차 응용문제
+    if (sessionStorage) {
+        const encryptedData = sessionStorage.getItem("Session_Storage_new_user_encryted");
+        if (encryptedData) {
+            const decryptedData = decrypt_text_join(encryptedData);
+            console.log(decryptedData); // 복호화된 데이터 직접 출력
+        } else {
+            console.log("암호화된 데이터가 없습니다.");
+        }
+    } else {
+        alert("세션 스토리지 지원 안됨");
+    }
+}
