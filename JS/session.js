@@ -82,7 +82,8 @@ function session_join_set(){ //세션 저장(객체)    
     } 
 }
 
-function session_join_get() { // 14주차 응용문제
+// 14주차 응용문제
+function session_join_get() { 
     if (sessionStorage) {
         const encryptedData = sessionStorage.getItem("Session_Storage_new_user_encryted");
         if (encryptedData) {
