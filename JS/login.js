@@ -126,7 +126,7 @@ const check_input = () => {
     }
 
     // 응용문제 연속된 숫자 2개이상 제한
-    if (/\d{2,}/.test(emailValue)) {
+    if (/^\d{2}/.test(emailValue)) {
         alert('아이디에는 연속된 숫자 2개 이상을 사용할 수 없습니다.');
         login_failed();
         return false;

@@ -96,3 +96,28 @@ function session_join_get() {
         alert("세션 스토리지 지원 안됨");
     }
 }
+
+// 보강주 응용 문제
+function login_check(event) {
+    const sessionData = sessionStorage.getItem('Session_Storage_object');
+    if (sessionData) {
+        const userData = JSON.parse(sessionData);
+        const userId = userData.id;
+        if (!userId || userId !== 'clli0726@sungkyul.ac.kr') {
+            event.preventDefault(); // 클릭동작 막기
+            alert('접근 권한이 없습니다.');
+            location.href = '../login/index_login.html';
+        }
+    } else {
+        event.preventDefault();
+        alert('로그인이 필요합니다.');
+        location.href = '../login/login.html';
+    }
+}
+// 링크 클릭 시 로그인 체크
+const profileLink = document.querySelector('a.nav-link[href="login/profile.html"]');
+if (profileLink) { 
+    profileLink.addEventListener('click', function(event) {
+        login_check(event); // 로그인 체크 수행
+    });
+}
